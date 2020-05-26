@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Weather_MVVM</string>
     <string name="authorization_Key">CWB-AFFBBE8B-1675-45D7-8BD2-C611E4153910</string>
+    <string name="secondKeyword">itemResult</string>
 </resources>

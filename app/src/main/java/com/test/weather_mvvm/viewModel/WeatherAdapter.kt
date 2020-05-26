@@ -13,9 +13,11 @@ import com.test.weather_mvvm.model.WeatherModel
 class WeatherAdapter :RecyclerView.Adapter<WeatherAdapter.ViewHolder>{
     private lateinit var context:Context
     private var data:List<WeatherModel>
-    constructor(context: Context , data:List<WeatherModel>){
+    private var callBack:IViewHolderClick
+    constructor(context: Context , data:List<WeatherModel> , callBack:IViewHolderClick){
         this.context = context
         this.data = data
+        this.callBack = callBack
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -32,9 +34,13 @@ class WeatherAdapter :RecyclerView.Adapter<WeatherAdapter.ViewHolder>{
         holder.bind(itemData)
         holder.itemView.setOnClickListener(object :View.OnClickListener{
             override fun onClick(v: View?) {
-                Toast.makeText(context, "Item $position is clicked.", Toast.LENGTH_SHORT).show()
+                callBack.ClickCallBack(itemData)
             }
         })
+    }
+
+    interface IViewHolderClick{
+        fun ClickCallBack(item:WeatherModel)
     }
 
     class ViewHolder :RecyclerView.ViewHolder{
